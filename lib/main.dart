@@ -26,9 +26,9 @@ class myhomepage extends StatelessWidget {
       date: DateTime.now(),
     ),
     Transaction(
-      id: 't1',
-      title: 'new shoes',
-      amount: 600,
+      id: 't2',
+      title: 'weekly groceries',
+      amount: 1000,
       date: DateTime.now(),
     ),
   ];
@@ -52,10 +52,14 @@ class myhomepage extends StatelessWidget {
               elevation: 10,
             ),
           ),
-          Card(
-            child: Text('List of Tx'),
-            color: Colors.blueGrey,
+          Column(
+            children: transaction.map((tx){
+              return Card(
+                child: Text(tx.title),
+              );
+            }).toList(),
           ),
+
         ],
 
       ),
