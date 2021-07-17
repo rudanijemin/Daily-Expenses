@@ -1,7 +1,8 @@
-
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import './transaction.dart';
+import './widgets/transaction_list.dart';
+
+
+
 
 void main() {
   runApp(MyApp());
@@ -20,20 +21,7 @@ class MyApp extends StatelessWidget {
 }
 
 class myhomepage extends StatelessWidget {
-  final List<Transaction> transaction =[
-    Transaction(
-      id: 't1',
-      title: 'new shoes',
-      amount: 600,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'weekly groceries',
-      amount: 1000,
-      date: DateTime.now(),
-    ),
-  ];
+
   final titleController = TextEditingController();
   final amountController = TextEditingController();
  // String titleInput;
@@ -60,82 +48,11 @@ class myhomepage extends StatelessWidget {
               elevation: 10,
             ),
           ),
-          Card(
 
-            elevation: 5,
-            child: Container(
-              padding: EdgeInsets.all(10),
-              child: Column(
-                crossAxisAlignment:CrossAxisAlignment.end ,
-                children: [
-                  TextField(
-                    decoration: InputDecoration(labelText: 'title'),
-                  controller: titleController,
-                  //  onChanged: (val){
-                    //  titleInput =val;
-                    //},
-                  ),
-                  TextField(
-                    decoration: InputDecoration(labelText: 'amount'),
-                  controller: amountController,
-                  //  onChanged: (val) => amountInput=val,
-                  ),
-                  FlatButton(
-                    child: Text("Add Transaction"),
-                    textColor: Colors.purple,
-
-                    onPressed: (){
-                      print(titleController.text);
-                      print(amountController.text);
-                      //print(titleInput);
-                    //  print(amountInput);
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Column(children: transaction.map((tx) {
-            return Card(
-              child: Row(children: <Widget>[
-                Container(
-                  child: Text(
-                    tx.amount.toString(),
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.purple,
-                    ),
-                  ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                  Text(
-                    tx.title,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-
-                  ),
-                  Text(
-                    DateFormat.yMd().format(tx.date),
-
-
-
-                  ),
-
-                ],
-                ),
-              ],
-            ),
-            );
-          }).toList(),),
 
         ],
 
-      ),
+      ) ,
     );
   }
 }
