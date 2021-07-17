@@ -39,10 +39,12 @@ class NewTrasaction extends StatelessWidget {
                 //  print(amountInput);
               },
             ),
+
           ],
         ),
       ),
     );
+
 
   }
 }
