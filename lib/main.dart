@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import './transaction.dart';
 
 void main() {
@@ -33,7 +34,10 @@ class myhomepage extends StatelessWidget {
       date: DateTime.now(),
     ),
   ];
-
+  final titleController = TextEditingController();
+  final amountController = TextEditingController();
+ // String titleInput;
+  //String amountInput;
 
 
   @override
@@ -43,16 +47,52 @@ class myhomepage extends StatelessWidget {
         title: Text('flutter'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        //mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
+
             color: Colors.teal,
             width: double.infinity,
             child: Card(
               child: Text('CHART!'),
               color: Colors.teal,
               elevation: 10,
+            ),
+          ),
+          Card(
+
+            elevation: 5,
+            child: Container(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment:CrossAxisAlignment.end ,
+                children: [
+                  TextField(
+                    decoration: InputDecoration(labelText: 'title'),
+                  controller: titleController,
+                  //  onChanged: (val){
+                    //  titleInput =val;
+                    //},
+                  ),
+                  TextField(
+                    decoration: InputDecoration(labelText: 'amount'),
+                  controller: amountController,
+                  //  onChanged: (val) => amountInput=val,
+                  ),
+                  FlatButton(
+                    child: Text("Add Transaction"),
+                    textColor: Colors.purple,
+
+                    onPressed: (){
+                      print(titleController.text);
+                      print(amountController.text);
+                      //print(titleInput);
+                    //  print(amountInput);
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
           Column(children: transaction.map((tx) {
@@ -62,8 +102,9 @@ class myhomepage extends StatelessWidget {
                   child: Text(
                     tx.amount.toString(),
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
+                      color: Colors.purple,
                     ),
                   ),
                 ),
@@ -79,7 +120,9 @@ class myhomepage extends StatelessWidget {
 
                   ),
                   Text(
-                      tx.date.toString(),
+                    DateFormat.yMd().format(tx.date),
+
+
 
                   ),
 
