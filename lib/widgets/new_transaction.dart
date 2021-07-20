@@ -10,6 +10,21 @@ class NewTrasaction extends StatelessWidget {
 
   NewTrasaction(this.addTx);
 
+  void submitData(){
+    final enteredTitle = titleController.text;
+    final enterAmount = double.parse(amountController.text);
+
+    if(enteredTitle.isEmpty || enterAmount <=0){
+      return;
+    }
+
+    addTx(
+      enteredTitle,
+      enterAmount,
+    );
+
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +39,7 @@ class NewTrasaction extends StatelessWidget {
             TextField(
               decoration: InputDecoration(labelText: 'title'),
               controller: titleController,
+              onSubmitted:(_) => submitData(),
               //  onChanged: (val){
               //  titleInput =val;
               //},
@@ -31,6 +47,8 @@ class NewTrasaction extends StatelessWidget {
             TextField(
               decoration: InputDecoration(labelText: 'amount'),
               controller: amountController,
+              keyboardType: TextInputType.number,
+              onSubmitted:(_) => submitData(),
               //  onChanged: (val) => amountInput=val,
             ),
             FlatButton(
@@ -44,14 +62,7 @@ class NewTrasaction extends StatelessWidget {
 
               textColor: Colors.purple,
 
-              onPressed: (){
-                addTx(
-                    titleController.text,
-                    double.parse(amountController.text),
-                );
-                 //print(titleInput);
-                //  print(amountInput);
-              },
+              onPressed: submitData,
             ),
 
           ],
