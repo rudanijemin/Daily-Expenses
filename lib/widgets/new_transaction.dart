@@ -1,3 +1,6 @@
+import 'dart:ui';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart ';
 
 class NewTrasaction extends StatelessWidget {
@@ -31,7 +34,14 @@ class NewTrasaction extends StatelessWidget {
               //  onChanged: (val) => amountInput=val,
             ),
             FlatButton(
-              child: Text("Add Transaction"),
+              child: Text(
+                  "Add Transaction",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+
               textColor: Colors.purple,
 
               onPressed: (){

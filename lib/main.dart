@@ -36,23 +36,25 @@ class myhomepage extends StatelessWidget {
       appBar: AppBar(
         title: Text('flutter'),
       ),
-      body: Column(
-        //mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Container(
+      body: SingleChildScrollView (
+        child: Column(
+          //mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
 
-            color: Colors.teal,
-            width: double.infinity,
-            child: Card(
-              child: Text('CHART!'),
               color: Colors.teal,
-              elevation: 10,
+              width: double.infinity,
+              child: Card(
+                child: Text('CHART!'),
+                color: Colors.teal,
+                elevation: 10,
+              ),
             ),
-          ),
-          UserTransaction(),
-        ],
+            UserTransaction(),
+          ],
 
+        ),
       ) ,
     );
   }
