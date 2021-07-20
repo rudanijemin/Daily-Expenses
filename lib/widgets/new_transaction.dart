@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart ';
 
 class NewTrasaction extends StatelessWidget {
-
+  final Function addTx;
   final titleController = TextEditingController();
   final amountController = TextEditingController();
+
+  NewTrasaction(this.addTx);
 
 
   @override
@@ -33,9 +35,11 @@ class NewTrasaction extends StatelessWidget {
               textColor: Colors.purple,
 
               onPressed: (){
-                print(titleController.text);
-                print(amountController.text);
-                //print(titleInput);
+                addTx(
+                    titleController.text,
+                    double.parse(amountController.text),
+                );
+                 //print(titleInput);
                 //  print(amountInput);
               },
             ),
