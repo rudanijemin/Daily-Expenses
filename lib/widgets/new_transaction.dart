@@ -3,12 +3,19 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart ';
 
-class NewTrasaction extends StatelessWidget {
+class NewTrasaction extends StatefulWidget {
   final Function addTx;
-  final titleController = TextEditingController();
-  final amountController = TextEditingController();
 
   NewTrasaction(this.addTx);
+
+  @override
+  _NewTrasactionState createState() => _NewTrasactionState();
+}
+
+class _NewTrasactionState extends State<NewTrasaction> {
+  final titleController = TextEditingController();
+
+  final amountController = TextEditingController();
 
   void submitData(){
     final enteredTitle = titleController.text;
@@ -18,32 +25,34 @@ class NewTrasaction extends StatelessWidget {
       return;
     }
 
-    addTx(
+    widget.addTx(
       enteredTitle,
       enterAmount,
     );
+    Navigator.of(context).pop();
 
   }
-
 
   @override
   Widget build(BuildContext context) {
     return Card(
 
-      elevation: 5,
+
       child: Container(
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.all(5),
         child: Column(
           crossAxisAlignment:CrossAxisAlignment.end ,
           children: [
             TextField(
               decoration: InputDecoration(labelText: 'title'),
               controller: titleController,
+              keyboardType: TextInputType.text,
               onSubmitted:(_) => submitData(),
               //  onChanged: (val){
               //  titleInput =val;
               //},
             ),
+
             TextField(
               decoration: InputDecoration(labelText: 'amount'),
               controller: amountController,
@@ -51,16 +60,32 @@ class NewTrasaction extends StatelessWidget {
               onSubmitted:(_) => submitData(),
               //  onChanged: (val) => amountInput=val,
             ),
-            FlatButton(
+            Container(
+              height: 70,
+              child: Row(children: [
+                Text("No data chosen"),
+                FlatButton(
+                  textColor: Theme.of(context).primaryColor,
+                  child: Text("Chose data",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  onPressed: (){},
+                ),
+              ],),
+            ),
+            RaisedButton(
               child: Text(
                   "Add Transaction",
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 15,
                   fontWeight: FontWeight.bold,
                 ),
               ),
 
-              textColor: Colors.purple,
+              color: Theme.of(context).primaryColor,
+              textColor: Theme.of(context).textTheme.button.color,
 
               onPressed: submitData,
             ),

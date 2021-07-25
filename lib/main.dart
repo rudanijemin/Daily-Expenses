@@ -21,7 +21,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "flutter project",
+      title: "Personal Expenses",
+      theme: ThemeData(
+        primaryColor: Colors.purple,
+        accentColor: Colors.amber,
+        errorColor: Colors.red,
+        fontFamily: "Quicksand",
+      ),
       home: myhomepage(),
     );
   }
@@ -38,18 +44,18 @@ class myhomepage extends StatefulWidget {
 
 class _myhomepageState extends State<myhomepage> {
   final List<Transaction> _userTransactions =[
-    Transaction(
-      id: 't1',
-      title: 'new shoes',
-      amount: 600,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'weekly groceries',
-      amount: 1000,
-      date: DateTime.now(),
-    ),
+    // Transaction(
+    //   id: 't1',
+    //   title: 'new shoes',
+    //   amount: 600,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: 't2',
+    //   title: 'weekly groceries',
+    //   amount: 1000,
+    //   date: DateTime.now(),
+    // ),
   ];
 
   void _addNewTransaction(String txTitle,double txAmount){
@@ -80,7 +86,8 @@ class _myhomepageState extends State<myhomepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('flutter'),
+       
+        title: Text('Personal Expenses',style: TextStyle(fontWeight: FontWeight.bold),),
         actions: [
           IconButton(icon: Icon(Icons.add),
             onPressed: () =>_startAddNewTrasaction(context),
